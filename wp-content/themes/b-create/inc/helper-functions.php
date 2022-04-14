@@ -123,3 +123,62 @@ if ( ! function_exists( 'bcreate_posts_content' ) ) {
         endif;
     }
 }
+
+/**
+ * Hiển thị breadcrumb
+ * Lưu ý là ví dụ này tôi chỉ lấy category đầu tiên
+ */
+if( !function_exists( 'bcreate_post_breadcrumb' ) ) {
+    function bcreate_post_breadcrumb( $postId = false ) {
+        $cats = get_the_category( $postId );
+        if( count( $cats ) > 0 ) {
+            $cat = $cats[0];
+            $title = get_the_title($postId);
+            if( strlen( $title ) > 10 ) {
+                $str = mb_substr($title, 0, 7, 'UTF-8');
+                $title = utf8_decode($str) . '...'; 
+            }
+            // print the breadcrumb
+            ob_start();
+        ?>
+        <ul class="breadcrumb">
+            <li><a href="/"><?= __("Trang chủ", THEME_TEXT_DOMAIN) ?></a></li>
+            <li><p class="ms-2 me-2">></p></li>
+            <li><a href="<?= get_category_link( $cat ) ?>"><?= $cat->cat_name ?></a></li>
+            <li><p class="ms-2 me-2">></p></li>
+            <li><?= $title ?></li>
+        </ul>
+        <?php
+            $content = ob_get_contents();
+            ob_clean();
+            ob_end_flush();
+            echo $content;
+        }
+    }
+}
+
+/**
+ * Hiển thị tag name
+ */
+if( !function_exists('bcreate_post_tags') ) {
+    function bcreate_post_tags( $postId = false ) {
+        $tags = get_the_tags($postId);
+        if( count( $tags ) > 0 ) {
+            ob_start();
+        ?>
+            <div class="tags">
+                <label><?= __("Tags:", THEME_TEXT_DOMAIN) ?></label>
+                <?php foreach( $tags as $tag ): ?>
+                    <a class="ms-2 me-2" href="<?= get_tag_link($tag) ?>"><?= $tag->name ?></a>
+                <?php    
+                    endforeach;
+                ?>
+            </div>
+        <?php
+            $content = ob_get_contents();
+            ob_clean();
+            ob_end_flush();
+            echo $content;
+        }
+    }
+}

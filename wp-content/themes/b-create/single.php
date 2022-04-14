@@ -6,11 +6,15 @@
  * @since B-Create 1.0
  */
 
+if( get_post_format() == 'video' ) {
+    get_header(); 
+} else {
+    get_header(); 
+}
+?>
 
-get_header(); ?>
 
-
-<div id="content" class="container">
+<div id="content">
     <div class="primary-content">
         <!-- Main content -->
         <section id="main-content">
@@ -30,16 +34,16 @@ get_header(); ?>
         </section>
 
         <!-- Sidebar -->
-        <section id="sidebar">
+        <section id="sidebar" class="container">
             <?php get_sidebar(); ?>
         </section>
     </div>
 
-    <div class="author-content">
+    <div class="author-content container">
         <?php get_template_part( "author" ) ?>
     </div>
 
-    <div class="comment-content">
+    <div class="comment-content container">
         <?php comments_template() ?>
     </div>
 
