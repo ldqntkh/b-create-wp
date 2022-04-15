@@ -12,7 +12,14 @@
 ?>
 			<footer id="site-footer" class="header-footer-group">
 
-				
+				 <!-- Sidebar -->
+				 <section id="footer-sidebar" class="container">
+					<?php
+						if ( is_active_sidebar('footer-sidebar') ) {
+							dynamic_sidebar( 'footer-sidebar' );
+						}
+					?>
+				</section>
 
 			</footer><!-- #site-footer -->
 

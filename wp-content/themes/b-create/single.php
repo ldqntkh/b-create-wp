@@ -31,7 +31,11 @@ get_header();
 
         <!-- Sidebar -->
         <section id="sidebar" class="container">
-            <?php get_sidebar(); ?>
+            <?php
+                if ( is_active_sidebar('post-sidebar') ) {
+                    dynamic_sidebar( 'post-sidebar' );
+                }
+            ?>
         </section>
     </div>
 

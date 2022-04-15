@@ -35,3 +35,33 @@
         }
     }
 }
+
+.home-sidebar {
+    article {
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        width: 100%;
+        figure {
+            margin: 0 10px 0 0;
+            img {
+                width: 100px;
+                height: 100px;
+            }
+        }
+        .post-content {
+            width: 100%;
+            .entry-title {
+                @include truncate-text(2);
+            }
+        }
+        margin-bottom: 10px;
+        border-bottom: 1px solid silver;
+        padding-bottom: 10px;
+        &:last-child {
+            margin-bottom: 0;
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+    }
+}

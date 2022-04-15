@@ -1,0 +1,26 @@
+footer {
+    clear: both;
+    background-color: white;
+
+    ul, ol, li {
+        list-style: none;
+    }
+
+    #footer-sidebar {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        >li {
+            flex: 1 1;
+            margin-right: 10px;
+        }
+
+        #footer-about {
+            img {
+                width: 200px;
+            }
+        }
+    }
+}

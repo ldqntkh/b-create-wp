@@ -16,8 +16,12 @@ get_header();
         <?php echo do_shortcode( '[new_posts]' ); ?>
     </div>
 
-    <div class="sidebar">
-        <?php get_sidebar('home'); ?>
+    <div class="home-sidebar sidebar">
+        <?php
+            if ( is_active_sidebar('home-sidebar') ) {
+                dynamic_sidebar( 'home-sidebar' );
+            }
+        ?>
     </div>
 </div>
 

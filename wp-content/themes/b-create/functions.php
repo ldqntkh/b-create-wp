@@ -28,7 +28,7 @@ if ( ! isset( $content_width ) ) {
 /**
  * Thiết lập các chức năng sẽ được theme hỗ trợ
 **/
-  if ( ! function_exists( "bcreate_setup_theme" ) ) {
+if ( ! function_exists( "bcreate_setup_theme" ) ) {
     /*
      * Nếu chưa có hàm bcreate_setup_theme() thì sẽ tạo mới hàm đó
      */
@@ -80,32 +80,22 @@ if ( ! isset( $content_width ) ) {
          */
         register_nav_menu ( "primary-menu", __("Primary Menu", THEME_TEXT_DOMAIN) );
 
-        /**
-         * Tạo sidebar cho theme
-         */
-        $sidebar = array(
-            "name" => __("Main Sidebar", THEME_TEXT_DOMAIN),
-            "id" => "main-sidebar",
-            "description" => "Main sidebar",
-            "class" => "main-sidebar",
-            "before_title" => "<h3 class='widgettitle'>",
-            "after_title" => "</h3>"
-        );
-        register_sidebar( $sidebar );
     }
     add_action ( "init", "bcreate_setup_theme" );
 }
 
-function set_posts_per_page_for_towns_cpt( $query ) {
-    if ( !is_admin() && $query->is_main_query() ) {
-        $query->set( 'posts_per_page', '5' );
-    }
-}
-add_action( 'pre_get_posts', 'set_posts_per_page_for_towns_cpt' );
+
+add_filter( 'gutenberg_use_widgets_block_editor', '__return_false' );
+add_filter( 'use_widgets_block_editor', '__return_false' );
+
 
 /**
  * require các file cần thiết
  */
+require_once THEME_URL . '/inc/sidebar/init-sidebar.php';
+
+require_once THEME_URL . '/inc/widgets/init-widget.php';
+
 require_once THEME_URL . '/inc/helper-functions.php';
 
 require_once THEME_URL . '/inc/shortcode/init-shortcode.php';

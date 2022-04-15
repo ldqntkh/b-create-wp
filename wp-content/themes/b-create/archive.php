@@ -59,7 +59,11 @@ get_header(); ?>
 
     <!-- Sidebar -->
     <section id="sidebar">
-		<?php get_sidebar(); ?>
+        <?php
+            if ( is_active_sidebar('category-sidebar') ) {
+                dynamic_sidebar( 'category-sidebar' );
+            }
+        ?>
 	</section>
 
 </div>
