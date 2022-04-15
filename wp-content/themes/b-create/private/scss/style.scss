@@ -3,10 +3,13 @@
 html, body {
     margin: 0;
     padding: 0;
+    background-color: #c0c0c029;
     a {
         color: black;
         text-decoration: none;
     }
 }
 
+@import './header';
+@import './home';
 @import './post';

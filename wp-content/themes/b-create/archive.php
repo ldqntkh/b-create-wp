@@ -41,7 +41,11 @@ get_header(); ?>
         <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 			<?php 
                 // muốn hàm này hoạt động được bắt buộc phải có file "content.php", chính xác hơn là "content-$post-format.php"
-                get_template_part( "content", get_post_format() ); 
+                if( is_single() ) {
+                    get_template_part( "content", get_post_format() ); 
+                } else {
+                    get_template_part( "content" ); 
+                }
             ?>
 		<?php endwhile; ?>
 		<?php bcreate_pagination(); ?>

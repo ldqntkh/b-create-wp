@@ -6,11 +6,7 @@
  * @since B-Create 1.0
  */
 
-if( get_post_format() == 'video' ) {
-    get_header(); 
-} else {
-    get_header(); 
-}
+get_header(); 
 ?>
 
 

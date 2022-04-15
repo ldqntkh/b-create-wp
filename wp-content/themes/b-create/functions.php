@@ -71,6 +71,11 @@ if ( ! isset( $content_width ) ) {
         );
 
         /**
+         * theme logo
+         */
+        add_theme_support( 'custom-logo' );
+
+        /**
          * Tạo menu cho theme
          */
         register_nav_menu ( "primary-menu", __("Primary Menu", THEME_TEXT_DOMAIN) );
@@ -102,5 +107,9 @@ add_action( 'pre_get_posts', 'set_posts_per_page_for_towns_cpt' );
  * require các file cần thiết
  */
 require_once THEME_URL . '/inc/helper-functions.php';
+
+require_once THEME_URL . '/inc/shortcode/init-shortcode.php';
+
+require_once THEME_URL . '/inc/header/header-content.php';
 
 require_once THEME_URL . '/inc/register-script.php';

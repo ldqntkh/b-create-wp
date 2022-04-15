@@ -13,12 +13,14 @@
         <?php bcreate_thumbnail("thumbnail") ?>
     </div>
 
-    <header class="entry-header">
-        <?php bcreate_post_header() ?>
-        <?php bcreate_post_meta() ?>
-    </header>
-    
-    <div class="entry-content">
-        <?php bcreate_posts_content() ?>
+    <div class="post-content">
+        <header class="entry-header">
+            <?php bcreate_post_header() ?>
+            <?php bcreate_post_meta() ?>
+        </header>
+        
+        <div class="entry-content">
+            <?php bcreate_posts_content() ?>
+        </div>
     </div>
 </article>
