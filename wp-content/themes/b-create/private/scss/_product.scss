@@ -1,0 +1,74 @@
+#product-page {
+    .product-main {
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        margin-top: 20px;
+        
+        .primary {
+            width: calc(70% - 10px);
+            margin-right: 10px;
+            background: white;
+            border-radius: 4px;
+            padding: 10px;
+            .product-head {
+                display: flex;
+                flex-direction: row;
+                justify-content: flex-start;
+                align-items: flex-start;
+                .product-images {
+                    width: 50%;
+                    #main-img {
+                        width: 100%;
+                        img {
+                            width: 100%;
+                            height: auto;
+                        }
+                    }
+                    #gallery {
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: flex-start;
+                        align-items: flex-start;
+                        height: 100px;
+                        width: 100%;
+                        img {
+                            width: 90px;
+                            height: 90px;
+                            object-fit: cover;
+                            margin: 5px;
+                            cursor: pointer;
+                            &:first-child {
+                                margin-left: 0;
+                            }
+                        }
+                    }
+                }
+                .product-shortdesc {
+                    width: calc(50% - 20px);
+                    margin-left: 20px;
+                }
+            }
+
+            .product-content {
+                border-top: 1px solid silver;
+                margin-top: 20px;
+                padding-top: 20px;
+            }
+        }
+    
+        .sidebar {
+            width: 30%;
+            background: white;
+            border-radius: 4px;
+            padding: 10px;
+            ul, li {
+                list-style: none;
+                margin: 0;
+                padding: 0;
+            }
+        }
+    }
+    
+}
+

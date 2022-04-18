@@ -80,8 +80,41 @@ if ( ! function_exists( "bcreate_setup_theme" ) ) {
          */
         register_nav_menu ( "primary-menu", __("Primary Menu", THEME_TEXT_DOMAIN) );
 
+        register_post_type( 'custom_product',
+            array(
+                'labels' => array( 'name' => __( 'Custom Product' ) ),
+                'public' => true,
+                'publicly_queryable' => true,
+                'show_ui' => true, 
+                'show_in_menu' => true, 
+                'query_var' => true,
+                'rewrite' => array('slug'=>'product'),  // chỉnh lại slug url
+                'capability_type' => 'post',
+                'has_archive' => true, 
+                'hierarchical' => false,
+                'menu_position' => 10,
+                'supports' => array('title', 'editor', 'thumbnail', 'custom-fields', 'revisions', 'page-attributes', 'tags'),
+                'taxonomies'  => array( 'category', 'post_tag' ),
+            )
+        );
+
+
     }
     add_action ( "init", "bcreate_setup_theme" );
+}
+
+add_filter('pre_get_posts', 'query_post_type');
+function query_post_type($query) {
+    if( is_category() || is_tag() ) {
+        $post_type = get_query_var('post_type');
+        
+        if($post_type)
+            $post_type = $post_type;
+        else
+            $post_type = array('nav_menu_item', 'custom_product'); 
+        $query->set('post_type',$post_type);
+        return $query;
+    }
 }
 
 

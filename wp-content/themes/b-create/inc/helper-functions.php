@@ -182,3 +182,25 @@ if( !function_exists('bcreate_post_tags') ) {
         }
     }
 }
+
+if( !function_exists( 'bcreate_convert_price' ) ) {
+    function bcreate_convert_price( $price ) {
+        
+        $price = number_format( floatval($price), 0, ',', '.' );
+        if( get_locale() == 'vi' ) {
+            return $price . " VND";
+        } else {
+            return "$" . $price;
+        }
+    }
+
+    add_filter( 'bcreate_product_price', 'bcreate_convert_price', 10, 1 );
+}
+
+if( !function_exists( 'bcreate_convert_price_20' ) ) {
+    function bcreate_convert_price_20( $price ) {
+        return "Not for sale!";
+    }
+
+    add_filter( 'bcreate_product_price', 'bcreate_convert_price_20', 20, 1 );
+}
