@@ -4,7 +4,6 @@
  * @package WordPress
  * @subpackage B-Create_Theme
  * @since B-Create 1.0
- * Template Name: B-CREATE product template
  */
 
 
